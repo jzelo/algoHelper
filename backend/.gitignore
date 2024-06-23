@@ -1,0 +1,28 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore yarn lock file
+yarn.lock
+
+# Ignore backend directory
+backend/
+
+# Ignore Python virtual environment directories
+env/
+venv/
+
+# Ignore other common files/directories
+__pycache__/
+*.pyc
+.DS_Store
+
+# Ignore results directory
+results/
+
+# Ignore cached GPT-2 tokenizer files
+cached_lm_GPT2Tokenizer_*
+
+# Other directories or files you want to ignore
+model/
+train.txt
+val.txt
