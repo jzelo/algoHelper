@@ -43,12 +43,11 @@ export default function EditScreenInfo({ path }: { path: string }) {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>AlgoHelper</Text>
-      </View>
+      <Text style={styles.headerText}>AlgoAid</Text>
+      <View style={styles.separator} lightColor="#0de82f" darkColor="rgba(255,255,255,0.1)" />
       <View style={styles.getStartedContainer}>
         <Text style={styles.getStartedText}>
-          Welcome to algoHelper! I'm your AI friend here to help you get better at solving algorithms.
+          Harness the power of AI to get answers to your algorithm questions.
         </Text>
       </View>
       <View style={styles.inputContainer}>
@@ -58,21 +57,25 @@ export default function EditScreenInfo({ path }: { path: string }) {
           placeholder="What is the time complexity of quicksort?"
           value={query}
           onChangeText={setQuery}
+          textColor='#ffffff'
           style={styles.textInput}
-          theme={{ colors: { primary: '#4CAF50' } }}
+          theme={{ colors: { primary: '#0de82f', text: '#ffffff' },
+                  roundness: 30}}
+          multiline
+          numberOfLines={4} // Adjust as needed
         />
         <Button
           mode="contained"
           onPress={handleQuerySubmit}
           style={styles.submitButton}
-          theme={{ colors: { primary: '#4CAF50' } }}
+          theme={{ colors: { primary: '#0de82f' } }}
           disabled={loading}
         >
           {loading ? <ActivityIndicator color="#ffffff" /> : 'Submit'}
         </Button>
       </View>
       <View style={styles.resultContainer}>
-        {loading && <ActivityIndicator size="large" color="#4CAF50" />}
+        {loading && <ActivityIndicator size="large" color="#0de82f" />}
         {result && <Text style={styles.resultText}>{result}</Text>}
         {error && <Text style={styles.errorText}>{error}</Text>}
       </View>
@@ -83,51 +86,77 @@ export default function EditScreenInfo({ path }: { path: string }) {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    padding: 20,
+    paddingTop: 100,
   },
   headerContainer: {
-    paddingVertical: 10,
-    alignItems: 'center',
-    backgroundColor: '#4CAF50',
+    alignItems: 'flex-start',
+  },
+  separator: {
     marginBottom: 20,
+    height: 1,
+    width: '90%',
+    backgroundColor: '#0de82f',
+    marginLeft: 17,
   },
   headerText: {
-    fontSize: 20,
-    color: '#fff',
+    marginBottom: 50,
+    fontSize: 30,
+    lineHeight: 40,
+    letterSpacing: 0.15,
+    color: '#f6f6f6',
     fontWeight: 'bold',
+    fontFamily: 'InterLight',
+    paddingLeft: 20,
   },
   getStartedContainer: {
     alignItems: 'center',
     marginHorizontal: 50,
+    marginLeft: 0,
   },
   getStartedText: {
     fontSize: 17,
-    lineHeight: 24,
-    textAlign: 'center',
+    lineHeight: 22,
+    paddingLeft: 20,
+    textAlign: 'left',
     marginBottom: 20,
+    color: '#f6f6f6',
+    fontFamily: 'InterLight',
   },
   inputContainer: {
     marginTop: 20,
+    backgroundColor: 'transparent',
+    padding: 5,
+    borderRadius: (50),
   },
   textInput: {
     marginBottom: 20,
+    fontFamily: 'InterRegular',
+    height: 200,
+    borderRadius: 10,
+    backgroundColor: '#2b2b2b',
+    padding: 10, // Add padding inside the text input
   },
   submitButton: {
+    marginTop: 10,
     alignSelf: 'center',
+    fontFamily: 'InterRegular',
   },
   resultContainer: {
     marginTop: 20,
     alignItems: 'center',
+    padding: 20,
   },
   resultText: {
     fontSize: 16,
-    color: '#4CAF50',
+    color: '#84878c',
     marginVertical: 10,
     textAlign: 'left', // Ensure text alignment for better readability
+    fontFamily: 'InterLight',
   },
   errorText: {
     fontSize: 16,
     color: 'red',
     marginVertical: 10,
+    fontFamily: 'InterRegular',
   },
 });
